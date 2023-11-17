@@ -2,9 +2,9 @@ test
 
 query
 
-CREATE SCHEMA `news_aggregator2` ;
+CREATE SCHEMA `news_aggregator` ;
 
-CREATE TABLE `news_aggregator2`.`users` (
+CREATE TABLE `news_aggregator`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `news_aggregator2`.`users` (
   `city` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `news_aggregator2`.`news` (
+CREATE TABLE `news_aggregator`.`news` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `content` TEXT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `news_aggregator2`.`news` (
   INDEX `userId_idx` (`userId` ASC) VISIBLE,
   CONSTRAINT `userId`
     FOREIGN KEY (`userId`)
-    REFERENCES `news_aggregator2`.`users` (`id`)
+    REFERENCES `news_aggregator`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
