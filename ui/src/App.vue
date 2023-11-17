@@ -1,4 +1,22 @@
 <script setup>
+import { watch, ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+
+const route = useRoute()
+const user = ref(null)
+
+watch(route, () => {
+  const localUser = JSON.parse(localStorage.getItem('user'))
+  user.value = localUser
+})
+
+function logOut() {
+  if (user.value) {
+    localStorage.removeItem('user')
+  }
+}
+
 </script>
 
 <template>
@@ -8,8 +26,15 @@
         <router-link :to="{ name: 'home' }">Home</router-link> |
         <router-link :to="{ name: 'about' }">About</router-link>
       </div>
-      <router-link :to="{ name: 'auth' }">Sign in</router-link>
+      <div>
+
+      </div>
+      <div>
+        <span v-if="user"><router-link :to="{ name: 'profile' }">Profile</router-link> | </span>
+        <router-link @click="logOut()" :to="{ name: 'auth' }">{{ user ? 'Sign out' : 'Sign in' }}</router-link>
+      </div>
     </div>
+    <img src="./assets/img.png" alt="" width="300">
     <router-view />
   </div>
 </template>
@@ -32,6 +57,8 @@
   text-decoration: none;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(26, 26, 125);
+  margin-bottom: 50px;
   /* position: relative; */
 }
 
@@ -44,7 +71,7 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: white;
 }
 
 #nav a.router-link-active {

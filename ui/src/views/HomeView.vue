@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import swal from 'sweetalert'
-
 import NewsCard from '../components/NewsCard.vue'
 
 onMounted(async () => {
@@ -40,18 +39,19 @@ async function createNews() {
 <template>
   <div class="home">
     <h1>Aggregated news for you...</h1>
-    <form v-if="news.userId" @submit.prevent="createNews()" class="post">
+    <form v-if="news.userId" @submit.prevent="createNews()" class="auth">
+      <h2>Create News</h2>
       <div>
-        <span>title</span>
+        <span>Title</span>
         <input required type="text" v-model="news.title" />
       </div>
       <div>
-        <span>content</span>
-        <textarea required type="text" v-model="news.content"></textarea>
+        <span>Content</span>
+        <textarea required v-model="news.content"></textarea>
       </div>
       <button>Create</button>
     </form>
-
+    <br />
     <NewsCard v-for="(news, idx) in newsList" :key="idx" :news="news" />
   </div>
 </template>
@@ -61,6 +61,45 @@ async function createNews() {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.auth {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth div {
+  margin-bottom: 15px;
+}
+
+.auth input,
+.auth textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.auth button:hover {
+  background-color: #45a049;
 }
 
 .post {

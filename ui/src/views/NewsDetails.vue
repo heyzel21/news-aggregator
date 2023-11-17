@@ -44,6 +44,8 @@ const news = ref(null)
 @media (min-width: 1440px) {
     .news {
         padding: 0 500px;
+        text-align: justify;
     }
 }
+
 </style>
