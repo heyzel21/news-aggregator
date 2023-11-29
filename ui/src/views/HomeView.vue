@@ -38,7 +38,6 @@ async function createNews() {
 
 <template>
   <div class="home">
-    <h1>Aggregated news for you...</h1>
     <form v-if="news.userId" @submit.prevent="createNews()" class="auth">
       <h2>Create News</h2>
       <div>
@@ -90,7 +89,7 @@ async function createNews() {
 }
 
 .auth button {
-  background-color: #4caf50;
+  background-color: #000000;
   color: white;
   padding: 10px 15px;
   border: none;

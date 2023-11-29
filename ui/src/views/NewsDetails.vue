@@ -17,9 +17,11 @@ const news = ref(null)
 <template>
     <div v-if="news" class="news">
         <h1>{{ news.title }}</h1>
-        <div class="details">
-            <p>u/{{ news.username }} on {{ news.dateCreated }}</p>
-            <p>{{ news.content }}</p>
+        <div class="about-container">
+            <div class="about">
+                <p>u/{{ news.username }} on {{ news.dateCreated }}</p>
+                <p>{{ news.content }}</p>
+            </div>
         </div>
         <router-link :to="{ name: 'home' }">go back</router-link>
     </div>
@@ -48,4 +50,23 @@ const news = ref(null)
     }
 }
 
+.about-container {
+    background-color: white;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: left;
+}
+
+.about {
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about p {
+    margin-bottom: 20px;
+    line-height: 2.5;
+    color: #333;
+}
 </style>

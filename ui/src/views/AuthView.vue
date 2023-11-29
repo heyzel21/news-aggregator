@@ -111,7 +111,7 @@ async function handleSignup() {
 }
 
 .auth {
-    margin-top: 90px;
+    margin-top: 20px;
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 8px;
